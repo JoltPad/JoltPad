@@ -41,6 +41,7 @@ INSERT INTO notes VALUES (1, 1, 1, CURRENT_DATE, 'buy firewood');
 INSERT INTO notes VALUES (2, 1, 1, CURRENT_DATE, 'make borscht');
 INSERT INTO notes VALUES (3, 1, 2, CURRENT_DATE, 'eggs, raw milk, honey, tortillas, kiwis');
 INSERT INTO notes VALUES (4, 1, 3, CURRENT_DATE, 'what about tinder but for taking notes?');
+INSERT INTO notes (user_id, category_id, contents) VALUES (1, 1, 'get a job')
 
 -- GET NOTES BY CATEGORY
 -- SELECT * FROM notes WHERE user_id = 1 AND category_id = 1;
