@@ -34,7 +34,7 @@ Controller.getAll = async (req, res, next) => {
 }
 
 //Gets all notes filtered by Category
-Controller.getCategory = (req, res, next) => {
+Controller.getCategory = async (req, res, next) => {
   const { user_id, category_id } = req.body;
   //Query has to group by categories, you might need to do a string.join here
   let qString = "SELECT * FROM notes WHERE user_id = $1 AND category_id = $2";
