@@ -14,13 +14,15 @@ app.use(express.urlencoded({ extended: true }));
 /**
  * handle requests for static files
  */
-app.use(express.static(path.resolve(__dirname, '../client')));
+// app.use(express.static(path.resolve(__dirname, '../client')));
 
 /**
  * define route handlers
  */
 // app.use('/api', apiRouter);
-
+app.get('/', (req, res) => {
+  res.status(200).send('backend');
+})
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));
 

@@ -1,6 +1,13 @@
 import React from 'react';
-import { render } from '../server/server';
 
-
+function App() {
+ 
+  return (
+    <>
+    <div>Hello</div>
+    <p>test</p>
+    </>
+  );
+}
 
 export default App;
