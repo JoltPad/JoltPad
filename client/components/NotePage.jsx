@@ -11,21 +11,21 @@ export default function NotePage() {
   return (
     
     <div className='LandingPage'>
-      {(!hoverOn)? <HoverDiv colorProps={'blue'} className='hoverDiv' / > : <NavBar />}
-      <Row>
+      {(hoverOn)? <HoverDiv colorProps={'blue'} className='hoverDiv1' / > : <NavBar />}
+      <Row className='middleRow'>
         <Col span={1}>
-          <HoverDiv hoverOn="hoverOn" colorProps={'blue'} className='hoverDiv' / > 
+          <HoverDiv hoverOn="hoverOn" colorProps={'blue'} className='hoverDiv2' / > 
         </Col>
         <Col span={22}>
           <div> Card Div, create a component for this [has 3 buttons]</div>
         </Col>
         <Col span={1}>
-        <HoverDiv hoverOn="hoverOn" colorProps={'blue'} className='hoverDiv' / >
+        <HoverDiv hoverOn="hoverOn" colorProps={'blue'} className='hoverDiv3' / >
         </Col>
       </Row>
       <Row>
         <Col span={24}> 
-          <HoverDiv hoverOn="hoverOn" colorProps={'blue'} className='hoverDiv' / >
+          <HoverDiv hoverOn="hoverOn" colorProps={'blue'} className='hoverDiv4' / >
         </Col>
       </Row>
     </div>
