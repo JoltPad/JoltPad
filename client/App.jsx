@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { SignUpPage } from './components/SignUpPage.jsx';
 import { NotePage } from './components/NotePage.jsx';
+import { LandingPage } from './components/LandingPage.jsx';
 
 
 
@@ -11,7 +12,7 @@ export function App() {
 
   return (
     <div>
-      {(isLoggedIn) ? <NotePage /> : <SignUpPage />}
+      {(isLoggedIn) ? <NotePage /> : <LandingPage />}
     </div>
   )
 }
