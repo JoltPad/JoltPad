@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-
+const Controller = require('./Controller');
 const app = express();
 
 const PORT = 3000;
@@ -14,15 +14,33 @@ app.use(express.urlencoded({ extended: true }));
 /**
  * handle requests for static files
  */
-// app.use(express.static(path.resolve(__dirname, '../client')));
+app.use(express.static(path.resolve(__dirname, '../client')));
 
 /**
  * define route handlers
  */
 // app.use('/api', apiRouter);
-app.get('/', (req, res) => {
-  res.status(200).send('backend');
-})
+
+// app.post('/categories', Controller.getCategory, (req, res) => {
+//   console.log('logged in');
+//   return res.status(200).json(res.locals.all);
+// });
+
+// app.post('/calendar', Controller.getAll,(req, res) => {
+//   console.log('logged in');
+//   return res.status(200).json(res.locals.all);
+// });
+ 
+// app.post('/login', Controller.login, Controller.getDaily, (req, res) => {
+//   console.log('logged in');
+//   return res.status(200).json(res.locals.all);
+// });
+
+// app.post('/signup', Controller.verifyUser, Controller.signup, (req, res) => {
+//   console.log('signed up new user');
+//   return res.sendStatus(200);
+// });
+
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));
 
@@ -50,3 +68,4 @@ app.listen(PORT, () => {
 });
 
 module.exports = app;
+

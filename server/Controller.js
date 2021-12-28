@@ -1,11 +1,98 @@
 const db = require('./database.js');
-var bcrypt = require('bcryptjs');
+const bcrypt = require('bcryptjs');
 
 const Controller = {};
 
-Controller.getDaily = (req, res, next) => {
-  const { username } = req.body.userInfo;
-  let qString = "Select * from"
+// Gets all notes from current day
+Controller.getDaily = async (req, res, next) => {
+  const { user_id } = req.body;
+  //Query string will obtain all the notes where the day is the present day
+  let qString = "SELECT * FROM notes WHERE user_id = $1 AND date_created >= NOW() - '1 DAY'::INTERVAL"
+  try {
+    const data = await db.query(qString, [user_id]);
+    res.locals.dailyNotes = data.rows;
+    return next();
+  } catch (err) {
+    return next();
+  }
+}
+
+//Gets all notes for the calendar view
+Controller.getAll = async (req, res, next) => {
+  const { user_id } = req.body;
+  let qString = "Select * FROM notes WHERE user_id = $1";
+  try {
+    const data = await db.query(qString, [user_id]);
+    res.locals.allNotes = data.rows;
+    return next();
+  } catch (error) {
+    return next({
+      log: 'Error in Controller.getAll',
+      message: { err: 'Controller.getAll: Error' }
+    })
+  }
+}
+
+//Gets all notes filtered by Category
+Controller.getCategory = (req, res, next) => {
+  const { user_id, category_id } = req.body;
+  //Query has to group by categories, you might need to do a string.join here
+  let qString = "SELECT * FROM notes WHERE user_id = $1 AND category_id = $2";
+  try {
+    const data = await db.query(qString, [user_id, category_id]);
+    res.locals.notesByCategory = data.rows;
+    return next();
+  } catch (err) {
+    return next({
+      log: 'Error in Controller.getCategory',
+      message: { err: 'Controller.getCategory: Error' }
+    })
+  }
+}
+//Adds a note to the database
+Controller.addNote = async (req, res, next) => {
+  const { user_id } = req.body;
+    let qString = "Insert INTO notes WHERE user_id = $1"
+  try {
+    const data = await db.query(qString, [user_id]);
+    res.sendStatus(201).send('Note successfully added');
+    return next();
+  } catch (err) {
+    return next({
+      log: 'Error in Controller.addNote',
+      message: { err: 'Controller.addNote: Error'},
+    })
+  }
+}
+
+Controller.deleteNote = async (req, res, next) => {
+  const { user_id, note_id } = req.body;
+  let qString = "DELETE FROM notes WHERE user_id = $1 AND note_id = $2"
+  try {
+    const data = await db.query(qString, [user_id, note_id]);
+    res.sendStatus(202).send('Note successfully deleted');
+    return next();
+  } catch (err) {
+    return next({
+      log: 'Error in Controller.deleteNote',
+      message: { err: 'Controller.deleteNote: Error'},
+    })
+  }
+}
+
+Controller.updateNote = async (req, res, next) => {
+  const { user_id, note_id, contents } = req.body;
+    let qString = "UPDATE notes SET contents=$3 WHERE user_id=$1 AND note_id=$2";
+  try {
+    const data = await db.query(qString, [user_id, note_id, contents]);
+    res.sendStatus(202).send('Note successfully updated');
+    return next();
+  } catch (err) {
+    return next({
+      log: 'Error in Controller.updateNote',
+      message: { err: 'Controller.updateNote: Error'},
+    })
+  }
 }
 
 Controller.login = (req, res, next) => {
@@ -50,7 +137,6 @@ Controller.verifyUser = (req, res, next) => {
   });
 }
 
-
 Controller.signup = async (req, res, next) => {
   console.log('this is the post request body', req.body.allInfo);
   const { username, password } = req.body.allInfo;
@@ -69,6 +155,5 @@ Controller.signup = async (req, res, next) => {
     });
  });  
 };
-
 
 module.exports = Controller;

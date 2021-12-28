@@ -48,7 +48,7 @@ INSERT INTO notes VALUES (4, 1, 3, CURRENT_DATE, 'what about tinder but for taki
 -- SELECT * FROM notes WHERE user_id = 1 AND date_created >= NOW() - '1 DAY'::INTERVAL;
 
 -- UPDATE NOTE by id
--- UPDATE notes SET contents = 'get job' WHERE note_id = 1;
+-- UPDATE notes SET contents = 'get job' WHERE user_id = 1 AND note_id = 1;
 
 -- DELETE NOTE by ID
 -- DELETE FROM notes WHERE user_id = 1 AND note_id = 1;
