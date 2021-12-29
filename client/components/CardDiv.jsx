@@ -12,7 +12,7 @@ export default function CardDiv(props) {
       margin: 'auto',
       marginTop: "20%",
     }}>
-    <input type="text"></input>
+    <input type="text" id="card-input"></input>
     </Paper>
   )
 }
