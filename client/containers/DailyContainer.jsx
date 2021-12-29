@@ -48,14 +48,14 @@ const DailyContainer = (props) => {
     setIndex(index === 0 ? notes.length - 1 : index - 1);
   } 
   return(
-    <>
+    <div className='dailyContainer'>
       <h3>Your Daily Cards</h3>
       <DailyCard className="daily-card" notes={notes} index={index} />
       <div className="btn-container" >
         <button className="btn" onClick={handlePrev}>Previous</button>
         <button className="btn" onClick={handleNext}>Next</button>
       </div>
-    </>
+    </div>
   )
 }
 
