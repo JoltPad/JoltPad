@@ -1,4 +1,3 @@
-//first set the module.exports to be an object that will hold all the configuration necessary
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require('path');
 const antDesignPath = path.resolve(__dirname, "./node_modules/antd/dist")
@@ -48,7 +47,7 @@ module.exports = {
       publicPath: '/'
     },
     compress: true,
-    //port: 9000,
+    //port: 8080,
     proxy: {
       '/': {
         target: 'http://localhost:3000/',

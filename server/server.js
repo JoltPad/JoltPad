@@ -1,8 +1,7 @@
-const path = require('path');
-const express = require('express');
-const Controller = require('./Controller');
+const express = require ('express');
+const router = require ('./router')
+const path = require ('path');
 const app = express();
-
 const PORT = 3000;
 
 /**
@@ -19,30 +18,12 @@ app.use(express.static(path.resolve(__dirname, '../client')));
 /**
  * define route handlers
  */
-// app.use('/api', apiRouter);
 
-// app.post('/categories', Controller.getCategory, (req, res) => {
-//   console.log('logged in');
-//   return res.status(200).json(res.locals.all);
-// });
-
-// app.post('/calendar', Controller.getAll,(req, res) => {
-//   console.log('logged in');
-//   return res.status(200).json(res.locals.all);
-// });
- 
-// app.post('/login', Controller.login, Controller.getDaily, (req, res) => {
-//   console.log('logged in');
-//   return res.status(200).json(res.locals.all);
-// });
-
-// app.post('/signup', Controller.verifyUser, Controller.signup, (req, res) => {
-//   console.log('signed up new user');
-//   return res.sendStatus(200);
-// });
+// root router to handle all valid routes
+app.use('/', router);
 
 // catch-all route handler for any requests to an unknown route
-app.use((req, res) => res.status(404).send('This is not the page you\'re looking for...'));
+app.use('*', (req, res) => res.status(404).send('This is not the page you\'re looking for...'));
 
 /**
  * express error handler
@@ -64,8 +45,7 @@ app.use((err, req, res, next) => {
  * start server
  */
 app.listen(PORT, () => {
-  console.log(`Server listening on port: ${PORT}...`);
+  console.log(`⚡Server listening on port: ${PORT}... 🚀`);
 });
 
 module.exports = app;
-
