@@ -1,32 +1,27 @@
 import React, { Component } from "react";
-import { SignUpPage } from "../components/SignUpPage.jsx";
+import { LoginPage } from "../components/LoginPage.jsx";
 const axios = require("axios");
 const FormValidators = require("../validate");
-const validateSignUpForm = FormValidators.validateSignUpForm;
+const validateLoginForm = FormValidators.validateLoginForm;
 const zxcvbn = require("zxcvbn");
 
-export class SignUpContainer extends Component {
+export class LoginContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       errors: {},
       user: {
-        firstName: "",
-        lastName: "",
         username: "",
-        email: "",
-        password: "",
-        pwconfirm: ""
+        password: ""
       },
       btnTxt: "show",
-      type: "password",
-      score: "0"
+      type: "password"
     };
 
     this.pwMask = this.pwMask.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.submitSignup = this.submitSignup.bind(this);
+    this.submitLogin = this.submitLogin.bind(this);
     this.validateForm = this.validateForm.bind(this);
     this.pwHandleChange = this.pwHandleChange.bind(this);
   }
@@ -57,7 +52,7 @@ export class SignUpContainer extends Component {
         })
       );
     } else {
-      var pw = zxcvbn(event.target.value);
+      const pw = zxcvbn(event.target.value);
       this.setState(state =>
         Object.assign({}, state, {
           score: pw.score + 1
@@ -66,12 +61,11 @@ export class SignUpContainer extends Component {
     }
   }
 
-  submitSignup(user) {
-    var params = { firstName: user.fname, lastName: user.lname, username: user.usr, password: user.pw, email: user.email };
+  submitLogin(user) {
+    const params = { username: user.usr, password: user.pw };
     axios
-      .post("/signup", params)
+      .post("/login", params)
       .then(res => {
-        console.log('res -->', res)
         if (res.data.verified === true) {
           localStorage.userID = res.data.user.user_id;
           localStorage.isAuthenticated = true;
@@ -83,25 +77,22 @@ export class SignUpContainer extends Component {
         }
       })
       .catch(err => {
-        console.log("Sign up data submit error: ", err);
+        console.log("Login data submit error: ", err);
       });
   }
 
   validateForm(event) {
     event.preventDefault();
-    var payload = validateSignUpForm(this.state.user);
+    const payload = validateLoginForm(this.state.user);
     if (payload.success) {
       this.setState({
         errors: {}
       });
-      var user = {
-        fname: this.state.user.firstName,
-        lname: this.state.user.lastName,
+      const user = {
         usr: this.state.user.username,
         pw: this.state.user.password,
-        email: this.state.user.email
       };
-      this.submitSignup(user);
+      this.submitLogin(user);
     } else {
       const errors = payload.errors;
       this.setState({
@@ -123,7 +114,7 @@ export class SignUpContainer extends Component {
   render() {
     return (
       <div>
-        <SignUpPage
+        <LoginPage
           onSubmit={this.validateForm}
           onChange={this.handleChange}
           onPwChange={this.pwHandleChange}

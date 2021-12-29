@@ -5,7 +5,7 @@ const Controller = {};
 
 //HANDLES GET REQUESTS: BY LATEST DATE
 Controller.getDaily = async (req, res, next) => {
-  const { user_id } = req.query;
+  const { user_id } = req.params;
   //Query string will obtain all the notes where the day is the present day
   const qString = "SELECT * FROM notes WHERE user_id = $1 AND created_at >= NOW() - '1 DAY'::INTERVAL"
   try {
@@ -105,11 +105,9 @@ Controller.verifyUser = async (req, res, next) => {
   try {
     const response = await db.query(qString, [username]);
     // const newHash = await bcrypt.hash(password, 10);
-    console.log(response);
     const user = response.rows[0];
-    console.log(user);
+    console.log('user obj:', user);
     const hash = response.rows[0].password_hash;
-    console.log(hash);
     const eval = await bcrypt.compare(password, hash);
     if (user && eval) {
       res.locals.verified = true;

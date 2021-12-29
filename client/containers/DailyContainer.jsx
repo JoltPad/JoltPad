@@ -3,27 +3,30 @@ import DailyCard from '../components/DailyCard.jsx';
 
 const DailyContainer = (props) => {
   
-  const data = [
-    { contents: 'practice yoga', category_name: 'To-Do' }, 
-    { contents: 'buy champagne', category_name: 'Shopping' }, 
-    { contents: 'When will the NeuralLink be my reality?', category_name: 'Thoughts' },
-    { contents: 'order ninja stars', category_name: 'Shopping' }, 
-    { contents: 'build the sauna', category_name: 'To-Do' }, 
-    { contents: 'Change is the only constant', category_name: 'Thoughts' }
-  ]
+  // const data = [
+  //   { contents: 'practice yoga', category_name: 'To-Do' }, 
+  //   { contents: 'buy champagne', category_name: 'Shopping' }, 
+  //   { contents: 'When will the NeuralLink be my reality?', category_name: 'Thoughts' },
+  //   { contents: 'order ninja stars', category_name: 'Shopping' }, 
+  //   { contents: 'build the sauna', category_name: 'To-Do' }, 
+  //   { contents: 'Change is the only constant', category_name: 'Thoughts' }
+  // ]
   //declare state
-  const [ notes, setNotes ] = useState(data);
+  const [ notes, setNotes ] = useState([]);
   const [ index, setIndex ] = useState(0);
   
- 
+  const user_id = 2;
   // //send fetch request to get daily notes from user_id 
-  // useEffect(() => {
+  useEffect(() => {
 
-  //   fetch(`http://localhost:3000/daily/${user_id}`)
-  //   .then((response) => response.json())
-  //   .then((data) => setNotes(data))
-  //   .catch(err => console.log(err))
-  // })
+    fetch(`http://localhost:3000/daily/${user_id}`)
+    .then((response) => {
+      response.json(); 
+      console.log(response);
+    })
+    .then((data) => setNotes(data))
+    .catch(err => console.log(err))
+  }, [])
 
   //send update note
   const updateNote = () => {
