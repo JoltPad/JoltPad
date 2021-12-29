@@ -19,32 +19,8 @@ app.use(express.urlencoded({ extended: true }));
  * define route handlers
  */
 
-// handles all routes
+// root router to handle all valid routes
 app.use('/', router);
-
-// app.post('/categories', Controller.getCategory, (req, res) => {
-//   console.log('notes by category retrieved');
-//   return res.status(200).json(res.locals.all);
-// });
-
-// app.post('/daily', Controller.getDaily, (req, res) => {
-
-// })
-
-// app.post('/calendar', Controller.getAll,(req, res) => {
-//   console.log('notes by calendar retrieved');
-//   return res.status(200).json(res.locals.all);
-// });
- 
-// app.post('/login', Controller.login, Controller.getDaily, (req, res) => {
-//   console.log('logged in');
-//   return res.status(200).json(res.locals.all);
-// });
-
-// app.post('/signup', Controller.verifyUser, Controller.signup, (req, res) => {
-//   console.log('signed up new user');
-//   return res.sendStatus(200);
-// });
 
 // catch-all route handler for any requests to an unknown route
 app.use('*', (req, res) => res.status(404).send('This is not the page you\'re looking for...'));

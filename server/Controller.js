@@ -16,7 +16,6 @@ Controller.getDaily = async (req, res, next) => {
     return next();
   }
 };
-
 //HANDLES GET REQUESTS: BY CATEGORY
 Controller.getCategory = async (req, res, next) => {
   const { user_id, category_id } = req.query;
@@ -33,7 +32,6 @@ Controller.getCategory = async (req, res, next) => {
     })
   }
 };
-
 //HANDLES GET REQUESTS: ALL NOTES
 Controller.getAll = async (req, res, next) => {
   const { user_id } = req.query;
@@ -49,8 +47,7 @@ Controller.getAll = async (req, res, next) => {
       message: { err: 'Controller.getAll: Error' }
     })
   }
-}
-
+};
 // HANDLES POST REQUESTS
 Controller.addNote = async (req, res, next) => {
   const { user_id, category_id, contents } = req.body;
@@ -70,10 +67,10 @@ Controller.addNote = async (req, res, next) => {
 // HANDLES PUT REQUESTS
 Controller.updateNote = async (req, res, next) => {
   const { user_id, note_id, contents } = req.body;
-  const qString = "UPDATE notes SET contents=$3 WHERE user_id=$1 AND note_id=$2";
+  const qString = "UPDATE notes SET contents=$3 WHERE user_id=$1 AND note_id=$2 RETURNING *";
   try {
     const response = await db.query(qString, [user_id, note_id, contents]);
-    console.log('updated note:', response.rows)
+    if (response) console.log('updated note:', response.rows)
     return next();
   } catch (err) {
     return next({
@@ -85,10 +82,11 @@ Controller.updateNote = async (req, res, next) => {
 // HANDLES DELETE REQUESTS
 Controller.deleteNote = async (req, res, next) => {
   const { user_id, note_id } = req.body;
-  let qString = "DELETE FROM notes WHERE user_id = $1 AND note_id = $2"
+  console.log('req.body:', user_id, note_id)
+  let qString = "DELETE FROM notes WHERE user_id = $1 AND note_id = $2 RETURNING *"
   try {
     const response = await db.query(qString, [user_id, note_id]);
-    console.log('deleted note:', response.rows);
+    if (response) console.log('deleted note:', response.rows);
     return next();
   } catch (err) {
     return next({

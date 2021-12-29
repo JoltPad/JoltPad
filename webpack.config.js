@@ -1,4 +1,3 @@
-//first set the module.exports to be an object that will hold all the configuration necessary
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require('path');
 
