@@ -1,6 +1,6 @@
-//first set the module.exports to be an object that will hold all the configuration necessary
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require('path');
+const antDesignPath = path.resolve(__dirname, "./node_modules/antd/dist")
 
 module.exports = {
   entry: path.join('/client/index.js'),
@@ -11,6 +11,11 @@ module.exports = {
   mode: process.env.NODE_ENV,
   module: {
     rules: [
+      {
+        test: /\.css$/,
+        include: [antDesignPath],
+        use: ['style-loader','css-loader']
+      },
       {
         test: /\.jsx?/,
         exclude: /(node_modules)/, 
@@ -32,7 +37,7 @@ module.exports = {
           // Compiles Sass to CSS
           "sass-loader",
         ]
-      }
+      },
     ]
   },
   plugins: [new HtmlWebpackPlugin({template: './client/index.html'})],
@@ -42,7 +47,7 @@ module.exports = {
       publicPath: '/'
     },
     compress: true,
-    //port: 9000,
+    //port: 8080,
     proxy: {
       '/': {
         target: 'http://localhost:3000/',

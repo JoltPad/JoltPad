@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
 import { SignUpPage } from './components/SignUpPage.jsx';
-import { LoginPage } from './components/LoginPage.jsx';
-import { NotePage } from './components/NotePage.jsx';
+import NotePage from './components/NotePage.jsx';
 import { SignUpContainer } from './containers/SignUpContainer.jsx'
 import { LoginContainer } from './containers/LoginContainer.jsx'
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import ReactDOM from 'react-dom';
+
+
+
 import '../client/style.scss'
 
+//delete this later
+import DailyContainer from '../client/containers/DailyContainer.jsx';
+
 export function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+
   return (
     <MuiThemeProvider>
-      <SignUpContainer />
+      {(isLoggedIn) ? <NotePage /> : <SignUpContainer />}
     </MuiThemeProvider>
   )
 }
