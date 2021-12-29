@@ -12,6 +12,8 @@ export class SignUpContainer extends Component {
     this.state = {
       errors: {},
       user: {
+        firstName: "",
+        lastName: "",
         username: "",
         email: "",
         password: "",
@@ -65,9 +67,9 @@ export class SignUpContainer extends Component {
   }
 
   submitSignup(user) {
-    var params = { username: user.usr, password: user.pw, email: user.email };
+    var params = { firstName: user.fname, lastName: user.lname, username: user.usr, password: user.pw, email: user.email };
     axios
-      .post("https://ouramazingserver.com/api/signup/submit", params)
+      .post("/signup", params)
       .then(res => {
         if (res.data.success === true) {
           localStorage.token = res.data.token;
@@ -92,6 +94,8 @@ export class SignUpContainer extends Component {
         errors: {}
       });
       var user = {
+        fname: this.state.user.firstName,
+        lname: this.state.user.lastName,
         usr: this.state.user.username,
         pw: this.state.user.password,
         email: this.state.user.email
