@@ -15,12 +15,32 @@ export default function NotePage() {
   const [editingOn, setEditingOn] = useState(false)
   const [noteInput, setNoteInput] = useState('')
 
+
+  //send update note
+  const updateNote = () => {
+    const body = {
+      user_id: localStorage.userID,
+      contents: noteInput
+    }
+    fetch('http://localhost:3000/update', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    }).catch(err => console.log('error in updateNote fetch', err));
+  }
+
+  //send delete note
+  const deleteNote = () => {
+    fetch(`http://localhost:3000/deleteNote/`)
+  } 
   return (
     // <DailyContainer className="daily-container"/>
     <div className='LandingPage'>
       <Row className='topRow'>
         <Col span={24}> 
-          {(hoverOn)? <HoverDiv hoverOn={hoverOn} setHoverOn={setHoverOn} colorProps={'pink'} className='hoverDiv1' / > : <NavBar />}
+          {(hoverOn)? <HoverDiv hoverOn={hoverOn} setHoverOn={setHoverOn} colorProps={'pink'} className='hoverDiv1' /> : <NavBar />}
         </Col>
       </Row>
       {(dailyDashOn) ?
