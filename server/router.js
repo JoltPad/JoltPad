@@ -4,8 +4,8 @@ const Controller = require ('./controller.js');
 const router = express.Router();
 
 router.get('/daily/:user_id', Controller.getDaily, (req, res) => {
-  console.log('all notes retrieved');
-  return res.status(200).json(res.locals.dailyNotes)
+  console.log('all notes retrieved', res.locals.dailyNotes);
+  return res.status(200).json(res.locals.dailyNotes);
 });
 
 router.get('/category', Controller.getCategory, (req, res) => {

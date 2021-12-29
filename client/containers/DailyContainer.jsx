@@ -19,15 +19,17 @@ const DailyContainer = (props) => {
   // //send fetch request to get daily notes from user_id 
   useEffect(() => {
 
-    fetch(`http://localhost:3000/daily/${user_id}`)
-    .then((response) => {
-      response.json(); 
-      console.log(response);
-    })
-    .then((data) => setNotes(data))
-    .catch(err => console.log(err))
-  }, [])
+    const getNotes = async () => {
+      
+      const notesFromDB = await fetchNotes();
+      setNotes(notesFromDB);
+      console.log('notes from inside getNotes', notes)
+    }
 
+    getNotes();
+    
+  }, [])
+  
   //send update note
   const updateNote = () => {
     fetch(`http://localhost:3000/updateNote/`)
@@ -50,6 +52,14 @@ const DailyContainer = (props) => {
     //if the current element is the first element, go backwards to the last element
     setIndex(index === 0 ? notes.length - 1 : index - 1);
   } 
+
+  const fetchNotes = async () => {
+    const result = await fetch(`http://localhost:3000/daily/2`);
+    const data = await result.json();
+    console.log(data);
+    return data;
+  }
+
   return(
     <div className='dailyContainer'>
       <h3>Your Daily Cards</h3>
@@ -57,6 +67,7 @@ const DailyContainer = (props) => {
       <div className="btn-container" >
         <button className="btn" onClick={handlePrev}>Previous</button>
         <button className="btn" onClick={handleNext}>Next</button>
+        {/* <button className="btn" onClick={((e) => fetchNotes(2))}>Get Cards</button> */}
       </div>
     </div>
   )

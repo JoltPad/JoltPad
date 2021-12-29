@@ -6,18 +6,17 @@ import CardContent from '@material-ui/core/CardContent';
 const DailyCard = (props) => {
   
   const { notes, index } = props;
-  //page will contain 
-  // console.log(notes[index].contents);
-  // console.log(notes[index].category_name);
+  
+  
   return (
     <>
       <div className="notecard">
         <div className="content-container">
           <div className="contents">
-            {/* {notes[index].contents} */}
+            {/* {notes[index].note_id} */}
           </div>
           <div className="category-name">
-            {/* {notes[index].category_name} */}
+            
           </div>
         </div>
       </div>
