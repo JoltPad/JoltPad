@@ -1,5 +1,7 @@
 form {
     width: 100%;
+    flex-direction: column;
+    
   }
   
   .loginBox {
@@ -14,6 +16,10 @@ form {
   }
   
   .signUpSubmit {
+    margin: 25px 0 15px 0;
+  }
+  
+   .LoginSubmit {
     margin: 25px 0 15px 0;
   }
   
