@@ -11,7 +11,7 @@ import '../client/style.scss'
 export function App() {
   return (
     <MuiThemeProvider>
-      <LoginContainer />
+      <SignUpPage />
     </MuiThemeProvider>
   )
 }
