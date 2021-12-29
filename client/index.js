@@ -3,8 +3,6 @@ import { render } from 'react-dom';
 import { App } from './App.jsx';
 
 render(
-  <section className="container">
-    <App />
-  </section>,
+    <App />,
   document.getElementById('root')
 );
