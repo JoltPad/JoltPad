@@ -52,7 +52,7 @@ export default function NotePage() {
         <Col span={22}>
           {/* can export the following div to be its own component */}
           <div className='notepage'>
-            <div>Cool Logo here</div>
+            <div>.</div>
             <CardDiv noteInput={noteInput} setNoteInput={setNoteInput} hoverOn={hoverOn} setHoverOn={setHoverOn} />
             {/* can add a conditional statement to only render the following when hoverOn is false */}
             <Button style ={{position: 'absolute', left:'0', bottom:'0'}} onClick={() => setCalendarViewOn(false)}> Calendar </Button>
