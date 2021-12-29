@@ -3,7 +3,7 @@ import FlatButton from "material-ui/FlatButton";
 import RaisedButton from "material-ui/RaisedButton";
 import TextField from "material-ui/TextField";
 import PasswordStr from "../PasswordStr";
-import { LandingPage } from "./NotePage.jsx";
+import { LoginContainer } from "../containers/LoginContainer.jsx";
 
 export const SignUpPage = ({
   history,
@@ -17,10 +17,10 @@ export const SignUpPage = ({
   pwMask,
   onPwChange
 }) => {
-  const [isNewUser, setIsNewUser] = useState(false);
-  console.log(isNewUser)
+  const [isCurrUser, setisCurrUser] = useState(false);
+  console.log(isCurrUser)
   return (
-    <div> {(isNewUser) ? <LandingPage /> :
+    <div> {(isCurrUser) ? <LoginContainer /> :
       <div className="loginBox">
         <h1>Sign Up</h1>
         {/* {errors.message && <p style={{ color: "red" }}>{errors.message}</p>} */}
@@ -94,8 +94,10 @@ export const SignUpPage = ({
           />
         </form>
         <p>
-          Aleady have an account? <br />
-          <button onClick={() => setIsNewUser(true)}>Log in here</button>
+          Aleady have an account?
+          <br />
+          <br />
+          <button onClick={() => setisCurrUser(true)}>Log in here</button>
         </p>
       </div>}
     </div>
