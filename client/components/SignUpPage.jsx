@@ -23,7 +23,7 @@ export const SignUpPage = ({
     <div> {(isCurrUser) ? <LoginContainer /> :
       <div className="loginBox">
         <h1>Sign Up</h1>
-        {/* {errors.message && <p style={{ color: "red" }}>{errors.message}</p>} */}
+        {errors.message && <p style={{ color: "red" }}>{errors.message}</p>}
 
         <form onSubmit={onSubmit}>
           <TextField

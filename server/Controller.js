@@ -105,11 +105,9 @@ Controller.verifyUser = async (req, res, next) => {
   try {
     const response = await db.query(qString, [username]);
     // const newHash = await bcrypt.hash(password, 10);
-    console.log(response);
     const user = response.rows[0];
-    console.log(user);
+    console.log('user obj:', user);
     const hash = response.rows[0].password_hash;
-    console.log(hash);
     const eval = await bcrypt.compare(password, hash);
     if (user && eval) {
       res.locals.verified = true;

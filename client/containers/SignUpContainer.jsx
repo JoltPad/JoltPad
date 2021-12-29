@@ -71,8 +71,9 @@ export class SignUpContainer extends Component {
     axios
       .post("/signup", params)
       .then(res => {
-        if (res.data.success === true) {
-          localStorage.token = res.data.token;
+        console.log('res -->', res)
+        if (res.data.verified === true) {
+          localStorage.userID = res.data.user.user_id;
           localStorage.isAuthenticated = true;
           window.location.reload();
         } else {

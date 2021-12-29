@@ -66,8 +66,8 @@ export class LoginContainer extends Component {
     axios
       .post("/login", params)
       .then(res => {
-        if (res.data.success === true) {
-          localStorage.token = res.data.token;
+        if (res.data.verified === true) {
+          localStorage.userID = res.data.user.user_id;
           localStorage.isAuthenticated = true;
           window.location.reload();
         } else {
