@@ -13,7 +13,6 @@ const DailyCard = (props) => {
             {notes[index].contents}
           </div>
           <div className="category-name">
-          
           </div>
         </div>
       </div>

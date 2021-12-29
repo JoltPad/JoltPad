@@ -191,5 +191,58 @@ h3{
   font-size: 3em;
 }
 
+// buttons from boarde
+.button-wrapper {
+  width: 100px;
+  height: 100px;
+  border-radius: 10%;
+  box-shadow: inset 0 0 50px #fff, inset 20px 0 80px #f0f,
+    inset -20px 0 80px #0ff, inset 20px 0 300px #f0f, inset -20px 0 300px #0ff,
+    0 0 20px #fff, -10px 0 40px #f0f, 10px 0 40px #0ff;
+}
 
+// <--------  BUTTON INTERACTIONS --------->
+
+.button-area {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  transition: filter 0.3s ease 0.3s;
+  transition-timing-function: ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-area:hover {
+  width: 100px;
+  height: 100px;
+  border-radius: 10%;
+  box-shadow: inset 0 0 30px #fff, inset 20px 0 80px #f0f,
+    inset -20px 0 80px #0ff, inset 20px 0 300px rgb(230, 146, 230),
+    inset -20px 0 300px #0ff, 0 0 20px #fff, -10px 0 40px rgb(230, 146, 230),
+    10px 0 40px #0ff;
+}
+
+.button-area:active {
+  width: 100px;
+  height: 100px;
+  border-radius: 10%;
+  box-shadow: inset 0 0 50px #fff, inset 20px 0 80px rgb(74, 253, 134),
+    inset -20px 0 80px #0ff, inset 20px 0 300px rgb(247, 3, 3),
+    inset -20px 0 300px #0ff, 0 0 20px #fff, -10px 0 40px #f0f, 10px 0 40px #0ff;
+  filter: drop-shadow(0px 0px 5px rgb(134, 233, 225));
+  transition: filter 0s;
+}
+
+.button-letter {
+  color: #001858;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 30px;
+}
   
