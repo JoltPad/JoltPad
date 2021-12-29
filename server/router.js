@@ -3,7 +3,7 @@ const Controller = require ('./controller.js');
 
 const router = express.Router();
 
-router.get('/daily', Controller.getDaily, (req, res) => {
+router.get('/daily/:user_id', Controller.getDaily, (req, res) => {
   console.log('all notes retrieved');
   return res.status(200).json(res.locals.dailyNotes)
 });
