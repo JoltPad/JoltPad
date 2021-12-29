@@ -6,6 +6,15 @@ const axios = require('axios');
 export default function HoverDiv(props) {
 
   const [style, setStyle] = useState({})
+
+
+  const categoryText = {
+    '1': 'To Do',
+    '2': 'Shopping',
+    '3': 'Ideas',
+    '4': 'General',
+  }
+
   function isHover() {
     if (props.hoverOn) {
       return { backgroundColor: props.colorProps }
@@ -55,6 +64,7 @@ export default function HoverDiv(props) {
       onDragEnter={e => handleDragEnter(e)}
       onDragLeave={e => handleDragLeave(e)}
       style={style}>
+        {categoryText[props.user_id]}
     </div>
   )
 
