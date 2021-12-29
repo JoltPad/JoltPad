@@ -1,5 +1,6 @@
 form {
     width: 100%;
+    background-color: rgb(30, 40, 96);
   }
   
   .loginBox {
@@ -48,4 +49,55 @@ form {
       width: 85%;
     }
   }
+//daily container styling
+.daily-container{
+  border: 4px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(30, 40, 96);
+
+}
+.daily-card{
+  border: 3px dotted yellow;
+  background-color: rgb(175, 175, 194);
+}
+.notecard{
+  border: 10px solid green;
+  box-shadow:
+  0 1px 1px hsl(0deg 0% 0% / 0.075),
+  0 2px 2px hsl(0deg 0% 0% / 0.075),
+  0 4px 4px hsl(0deg 0% 0% / 0.075),
+  0 8px 8px hsl(0deg 0% 0% / 0.075),
+  0 16px 16px hsl(0deg 0% 0% / 0.075)
+;
+  width: 15em;
+  display: flex;
+  background-color: rgb(44, 44, 63);
+  
+}
+
+.btn-container{
+  border: 1px solid blue;
+}
+
+.btn{
+  border: 1px solid pink;
+  background-color: rgb(44, 44, 63);
+}
+
+//notecard styling
+.content-container{
+  border: 1px solid orange;
+}
+
+.contents{
+  border: 1px solid purple;
+}
+
+.category-name{
+  border: 1px dotted red;
+}
+
+
   
