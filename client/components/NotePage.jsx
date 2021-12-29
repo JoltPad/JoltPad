@@ -20,32 +20,32 @@ export default function NotePage() {
     <div className='LandingPage'>
       <Row className='topRow'>
         <Col span={24}> 
-          {(hoverOn)? <HoverDiv colorProps={'blue'} className='hoverDiv1' / > : <NavBar />}
+          {(hoverOn)? <HoverDiv hoverOn={hoverOn} setHoverOn={setHoverOn} colorProps={'pink'} className='hoverDiv1' / > : <NavBar />}
         </Col>
       </Row>
       {(dailyDashOn) ?
       <>
       <Row className='middleRow'>
         <Col span={1}>
-          <HoverDiv hoverOn="hoverOn" colorProps={'blue'} className='hoverDiv2' / > 
+          <HoverDiv hoverOn={hoverOn} setHoverOn={setHoverOn} colorProps={'blue'} className='hoverDiv2' / > 
         </Col>
         <Col span={22}>
           {/* can export the following div to be its own component */}
           <div className='notepage'>
             <div>Cool Logo here</div>
-            <CardDiv noteInput={noteInput} setNoteInput={setNoteInput} />
+            <CardDiv noteInput={noteInput} setNoteInput={setNoteInput} hoverOn={hoverOn} setHoverOn={setHoverOn} />
             {/* can add a conditional statement to only render the following when hoverOn is false */}
             <Button style ={{position: 'absolute', left:'0', bottom:'0'}} onClick={() => setCalendarViewOn(false)}> Calendar </Button>
             <Button style ={{position: 'absolute', right:'0', bottom:'0'}} onClick={() => setDailyDashOn(false)}> Daily Dash </Button>
           </div>
         </Col>
         <Col span={1}>
-        <HoverDiv hoverOn="hoverOn" colorProps={'orange'} className='hoverDiv3' / >
+        <HoverDiv hoverOn={hoverOn} setHoverOn={setHoverOn} colorProps={'orange'} className='hoverDiv3' / >
         </Col>
       </Row>
       <Row className='botRow'>
         <Col span={24}> 
-          <HoverDiv hoverOn="hoverOn" colorProps={'yellow'} className='hoverDiv4' / >
+          <HoverDiv hoverOn={hoverOn} setHoverOn={setHoverOn} colorProps={'yellow'} className='hoverDiv4' / >
         </Col>
       </Row></> : <DailyContainer className="daily-container"/>}
     </div>
