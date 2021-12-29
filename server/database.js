@@ -1,10 +1,8 @@
 const { Pool } = require('pg');
+require('dotenv').config();
 
-
-const PG_URI = 'postgres://lcezaxxe:ijHq5ca7xkNSxarV5w7fzM7o8OyzheZZ@castor.db.elephantsql.com/lcezaxxe';
-
-// johnny's database
-// const PG_URI = 'postgres://znhpnfcp:OwJBTs9fkVCyvWoy1a7fD5udOrvZkza6@castor.db.elephantsql.com/znhpnfcp';
+// const PG_URI = 'postgres://lcezaxxe:ijHq5ca7xkNSxarV5w7fzM7o8OyzheZZ@castor.db.elephantsql.com/lcezaxxe';
+const PG_URI = process.env.PG_URI;
 
 const pool = new Pool({
   connectionString: PG_URI
@@ -12,7 +10,7 @@ const pool = new Pool({
 
 module.exports = {
   query: (text, params, callback) => {
-    console.log('connected to database and put in query', text);
+    console.log('connected to database and input query', text);
     return pool.query(text, params, callback);
   }
 };
