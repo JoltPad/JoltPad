@@ -6,6 +6,7 @@ const axios = require('axios');
 export default function HoverDiv(props) {
 
   const [style, setStyle] = useState({})
+  const [insideText, setInsideText] = useState('')
 
 
   const categoryText = {
@@ -15,8 +16,15 @@ export default function HoverDiv(props) {
     '4': 'General',
   }
 
+  function divText (a) {
+    if (props.hoverOn) {
+      return categoryText[a]
+    } 
+  }
+
   function isHover() {
     if (props.hoverOn) {
+
       return { backgroundColor: props.colorProps }
     }
   }
@@ -55,6 +63,7 @@ export default function HoverDiv(props) {
 
   useEffect(() => {
     setStyle(isHover());
+    setInsideText(divText(props.categoryID));
   }, [props.hoverOn]);
 
   return (
@@ -64,7 +73,7 @@ export default function HoverDiv(props) {
       onDragEnter={e => handleDragEnter(e)}
       onDragLeave={e => handleDragLeave(e)}
       style={style}>
-        {categoryText[props.user_id]}
+        <div className={'childHoverDiv' + props.categoryID}>{insideText}</div>
     </div>
   )
 
