@@ -26,12 +26,12 @@ const handleDrop = e => {
   e.preventDefault();
   e.stopPropagation();
   console.log('dropped');
-  console.log(props.className)
+  console.log(props.className);
+  props.setHoverOn(false);
 };
 
 useEffect(() => {
   setStyle(isHover());
-  console.log(style);
 }, [props.hoverOn]);
 
   return (
