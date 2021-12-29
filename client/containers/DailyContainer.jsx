@@ -12,10 +12,10 @@ const DailyContainer = (props) => {
   //   { contents: 'Change is the only constant', category_name: 'Thoughts' }
   // ]
   //declare state
-  const [ notes, setNotes ] = useState(data);
+  const [ notes, setNotes ] = useState([]);
   const [ index, setIndex ] = useState(0);
   
- 
+  const user_id = 1;
   // //send fetch request to get daily notes from user_id 
   useEffect(() => {
 
@@ -48,14 +48,14 @@ const DailyContainer = (props) => {
     setIndex(index === 0 ? notes.length - 1 : index - 1);
   } 
   return(
-    <>
+    <div className='dailyContainer'>
       <h3>Your Daily Cards</h3>
       <DailyCard className="daily-card" notes={notes} index={index} />
       <div className="btn-container" >
         <button className="btn" onClick={handlePrev}>Previous</button>
         <button className="btn" onClick={handleNext}>Next</button>
       </div>
-    </>
+    </div>
   )
 }
 
