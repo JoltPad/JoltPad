@@ -9,8 +9,8 @@ Controller.getDaily = async (req, res, next) => {
   //Query string will obtain all the notes where the day is the present day
   const qString = "SELECT * FROM notes WHERE user_id = $1 AND date_created >= NOW() - '1 DAY'::INTERVAL"
   try {
-    const data = await db.query(qString, [user_id]);
-    res.locals.dailyNotes = data.rows;
+    const response = await db.query(qString, [user_id]);
+    res.locals.dailyNotes = response.rows;
     return next();
   } catch (err) {
     return next();
@@ -22,9 +22,9 @@ Controller.getCategory = async (req, res, next) => {
   const { user_id, category_id } = req.query;
   const qString = "SELECT * FROM notes WHERE user_id = $1 AND category_id = $2";
   try {
-    const data = await db.query(qString, [user_id, category_id]);
-    console.log(data.rows);
-    res.locals.notesByCategory = data.rows;
+    const response = await db.query(qString, [user_id, category_id]);
+    console.log(response.rows);
+    res.locals.notesByCategory = response.rows;
     return next();
   } catch (err) {
     return next({
@@ -39,9 +39,9 @@ Controller.getAll = async (req, res, next) => {
   const { user_id } = req.query;
   const qString = "Select * FROM notes WHERE user_id = $1";
   try {
-    const data = await db.query(qString, [user_id]);
-    console.log('db response', data.rows);
-    res.locals.allNotes = data.rows;
+    const response = await db.query(qString, [user_id]);
+    console.log('db response', response.rows);
+    res.locals.allNotes = response.rows;
     return next();
   } catch (error) {
     return next({
@@ -57,8 +57,8 @@ Controller.addNote = async (req, res, next) => {
   console.log(req.body);
   const qString = "INSERT INTO notes (user_id, category_id, contents) VALUES($1, $2, $3) RETURNING *"
   try {
-    const data = await db.query(qString, [user_id, category_id, contents]);
-    console.log('new note:', data.rows);
+    const response = await db.query(qString, [user_id, category_id, contents]);
+    console.log('new note:', response.rows);
     return next();
   } catch (err) {
     return next({
@@ -72,8 +72,8 @@ Controller.updateNote = async (req, res, next) => {
   const { user_id, note_id, contents } = req.body;
   const qString = "UPDATE notes SET contents=$3 WHERE user_id=$1 AND note_id=$2";
   try {
-    const data = await db.query(qString, [user_id, note_id, contents]);
-    console.log('updated note:', data.rows)
+    const response = await db.query(qString, [user_id, note_id, contents]);
+    console.log('updated note:', response.rows)
     return next();
   } catch (err) {
     return next({
@@ -87,8 +87,8 @@ Controller.deleteNote = async (req, res, next) => {
   const { user_id, note_id } = req.body;
   let qString = "DELETE FROM notes WHERE user_id = $1 AND note_id = $2"
   try {
-    const data = await db.query(qString, [user_id, note_id]);
-    console.log('deleted note:', data.rows);
+    const response = await db.query(qString, [user_id, note_id]);
+    console.log('deleted note:', response.rows);
     return next();
   } catch (err) {
     return next({
@@ -105,8 +105,8 @@ Controller.deleteNote = async (req, res, next) => {
 //   // const hash = bcrypt.hashSync(password, 2);
 //   // console.log(hash);
 //   db.query(qString, [username])
-//     .then(async (data) => {
-//       const hash = await data.rows[0].password;
+//     .then(async (response) => {
+//       const hash = await response.rows[0].password;
 //       const eval = await bcrypt.compare(password, hash);
 //       if (eval) {
 //         res.locals.loginStatus = true;

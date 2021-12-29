@@ -42,7 +42,7 @@ module.exports = {
       publicPath: '/'
     },
     compress: true,
-    //port: 9000,
+    //port: 8080,
     proxy: {
       '/': {
         target: 'http://localhost:3000/',
