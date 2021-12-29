@@ -5,7 +5,7 @@ const Controller = {};
 
 //HANDLES GET REQUESTS: BY LATEST DATE
 Controller.getDaily = async (req, res, next) => {
-  const { user_id } = req.query;
+  const { user_id } = req.params;
   //Query string will obtain all the notes where the day is the present day
   const qString = "SELECT * FROM notes WHERE user_id = $1 AND created_at >= NOW() - '1 DAY'::INTERVAL"
   try {

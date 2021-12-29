@@ -15,15 +15,18 @@ const DailyContainer = (props) => {
   const [ notes, setNotes ] = useState([]);
   const [ index, setIndex ] = useState(0);
   
-  const user_id = 1;
+  const user_id = 2;
   // //send fetch request to get daily notes from user_id 
   useEffect(() => {
 
     fetch(`http://localhost:3000/daily/${user_id}`)
-    .then((response) => response.json())
+    .then((response) => {
+      response.json(); 
+      console.log(response);
+    })
     .then((data) => setNotes(data))
     .catch(err => console.log(err))
-  })
+  }, [])
 
   //send update note
   const updateNote = () => {
