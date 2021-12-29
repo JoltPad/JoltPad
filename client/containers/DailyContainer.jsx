@@ -28,17 +28,6 @@ const DailyContainer = (props) => {
     }
     getNotes();
   }, [])
-  
-  //send update note
-  const updateNote = () => {
-    fetch(`http://localhost:3000/updateNote/`)
-
-  }
-
-  //send delete note
-  const deleteNote = () => {
-    fetch(`http://localhost:3000/deleteNote/`)
-  } 
 
   const handleNext = () => {
     event.preventDefault();
@@ -59,13 +48,18 @@ const DailyContainer = (props) => {
     console.log('on load', data);
     return data;
   }
-  console.log(notes);
+  
+  const editNote = () => {
+    location.href = 'http://localhost:8080';
+
+  }
   return(
     <div className='dailyContainer'>
       <h3>Your Daily Cards</h3>
       <DailyCard className="daily-card" notes={notes} index={index} />
       <div className="btn-container" >
         <button className="btn" onClick={handlePrev}>Previous</button>
+        <button className="btn" onClick={editNote}>Edit</button>
         <button className="btn" onClick={handleNext}>Next</button>
       </div>
     </div>
