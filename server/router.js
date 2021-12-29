@@ -33,14 +33,14 @@ router.delete('/delete', Controller.deleteNote, (req, res) => {
   res.status(201).send('note successfully deleted');
 });
  
-// router.post('/login', Controller.login, (req, res) => {
-//   console.log('successfully logged in');
-//   return res.status(200);
-// });
+router.post('/login', Controller.verifyUser, (req, res) => {
+  console.log('successfully logged in');
+  return res.status(200).json(res.locals);
+});
 
-// router.post('/signup', Controller.verifyUser, Controller.signup, (req, res) => {
-//   console.log('successfully signed up new user');
-//   return res.sendStatus(200);
-// });
+router.post('/signup', Controller.registerUser, (req, res) => {
+  console.log('successfully signed up new user');
+  return res.status(200).json(res.locals);
+});
 
 module.exports = router;
