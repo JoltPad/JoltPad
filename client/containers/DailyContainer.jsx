@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Button from '@material-ui/core/Button';
 import DailyCard from '../components/DailyCard.jsx';
-
 
 const DailyContainer = (props) => {
   
@@ -54,8 +52,8 @@ const DailyContainer = (props) => {
       <h3>Your Daily Cards</h3>
       <DailyCard className="daily-card" notes={notes} index={index} />
       <div className="btn-container" >
-        <Button className="btn" onClick={handleNext}>Next</Button>
-        <Button className="btn" onClick={handlePrev}>Previous</Button>
+        <button className="btn" onClick={handlePrev}>Previous</button>
+        <button className="btn" onClick={handleNext}>Next</button>
       </div>
     </>
   )

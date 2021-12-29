@@ -10,16 +10,16 @@ const DailyCard = (props) => {
   
   return (
     <>
-      <Card className="notecard">
-        <CardContent className="content-container">
+      <div className="notecard">
+        <div className="content-container">
           <div className="contents">
             {notes[index].contents}
           </div>
           <div className="category-name">
             {notes[index].category_name}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </>
   )
 }
