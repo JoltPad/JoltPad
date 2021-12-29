@@ -7,6 +7,24 @@ const validateSignUpForm = payload => {
 
   if (
     !payload ||
+    typeof payload.firstName !== "string" ||
+    payload.firstName.trim().length === 0
+  ) {
+    isFormValid = false;
+    errors.firstName = "Please provide your first name.";
+  }
+  
+if (
+    !payload ||
+    typeof payload.lastName !== "string" ||
+    payload.lastName.trim().length === 0
+  ) {
+    isFormValid = false;
+    errors.lastName = "Please provide your last name.";
+  }
+
+  if (  
+    !payload ||
     typeof payload.username !== "string" ||
     payload.username.trim().length === 0
   ) {
