@@ -18,7 +18,7 @@ export default function CardDiv(props) {
         margin: 'auto',
         marginTop: "20%",
       }}>
-        <textarea name="paragraph_text" cols="50" rows="10"onChange={(e) => (props.setNoteInput(e.target.value))}></textarea>
+        <textarea id="card-input" name="paragraph_text" cols="50" rows="10"onChange={(e) => (props.setNoteInput(e.target.value))}></textarea>
       </Paper>
     </ThemeProvider>
   )

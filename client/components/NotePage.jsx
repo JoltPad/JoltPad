@@ -20,14 +20,14 @@ export default function NotePage() {
     <div className='LandingPage'>
       <Row className='topRow'>
         <Col span={24}> 
-          {(hoverOn)? <HoverDiv hoverOn={hoverOn} setHoverOn={setHoverOn} colorProps={'pink'} className='hoverDiv1' / > : <NavBar />}
+          {(hoverOn)? <HoverDiv noteInput={noteInput} hoverOn={hoverOn} setHoverOn={setHoverOn} colorProps={'pink'} className='hoverDiv1'  categoryID = '1'/ > : <NavBar />}
         </Col>
       </Row>
       {(dailyDashOn) ?
       <>
       <Row className='middleRow'>
         <Col span={1}>
-          <HoverDiv hoverOn={hoverOn} setHoverOn={setHoverOn} colorProps={'blue'} className='hoverDiv2' / > 
+          <HoverDiv noteInput={noteInput} hoverOn={hoverOn} setHoverOn={setHoverOn} colorProps={'blue'} className='hoverDiv2' categoryID = '2' / > 
         </Col>
         <Col span={22}>
           {/* can export the following div to be its own component */}
@@ -40,12 +40,12 @@ export default function NotePage() {
           </div>
         </Col>
         <Col span={1}>
-        <HoverDiv hoverOn={hoverOn} setHoverOn={setHoverOn} colorProps={'orange'} className='hoverDiv3' / >
+        <HoverDiv noteInput={noteInput} hoverOn={hoverOn} setHoverOn={setHoverOn} colorProps={'orange'} className='hoverDiv3' categoryID = '3'/ >
         </Col>
       </Row>
       <Row className='botRow'>
         <Col span={24}> 
-          <HoverDiv hoverOn={hoverOn} setHoverOn={setHoverOn} colorProps={'yellow'} className='hoverDiv4' / >
+          <HoverDiv noteInput={noteInput} hoverOn={hoverOn} setHoverOn={setHoverOn} colorProps={'yellow'} className='hoverDiv4' categoryID = '4'/ >
         </Col>
       </Row></> : <DailyContainer className="daily-container"/>}
     </div>
