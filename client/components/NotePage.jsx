@@ -47,7 +47,7 @@ export default function NotePage() {
       <>
       <Row className='middleRow'>
         <Col span={1}>
-          <HoverDiv noteInput={noteInput} hoverOn={hoverOn} setHoverOn={setHoverOn} colorProps={'blue'} className='hoverDiv2' categoryID = '2' / > 
+          <HoverDiv noteInput={noteInput} hoverOn={hoverOn} setHoverOn={setHoverOn} colorProps={'aquamarine'} className='hoverDiv2' categoryID = '2' / > 
         </Col>
         <Col span={22}>
           {/* can export the following div to be its own component */}

@@ -77,7 +77,7 @@ const ResponsiveAppBar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={()=>(delete localStorage.isAuthenticated, window.location.reload(), console.log('clickito'))}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -95,7 +95,7 @@ const ResponsiveAppBar = () => {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={()=>(delete localStorage.isAuthenticated, window.location.reload(), console.log('clickito'))}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
