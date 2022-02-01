@@ -6,6 +6,12 @@
   width: 100%;
   height: 100%;
 }
+
+.imgJolt {
+  margin-left: 25%;
+  width: 50%;
+  height: 50%;
+}
 textarea {
   //border-radius: 2px;
   border: none;
@@ -80,15 +86,16 @@ textarea:focus {
   align-items: center;   /* <---- NEW    */
   width: 100%;
   height: 100%;
-  box-shadow:
-  inset 0 0 50px #fff,
-  inset 20px 0 80px rgb(242, 215, 242),
-  inset -20px 0 80px #0ff,
-  inset 20px 0 300px rgb(245, 219, 245),
-  inset -20px 0 300px #0ff,
-  0 0 20px #fff,
-  -10px 0 40px rgb(232, 205, 232),
-  10px 0 40px #0ff;
+  // box-shadow:
+  // inset 0 0 50px #fff,
+  // inset 20px 0 80px rgb(242, 215, 242),
+  // inset -20px 0 80px #0ff,
+  // inset 20px 0 300px rgb(245, 219, 245),
+  // inset -20px 0 300px #0ff,
+  // 0 0 20px #fff,
+  // -10px 0 40px rgb(232, 205, 232),
+  // 10px 0 40px #0ff;
+  background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
   border: none;
   font-size: x-large;
   font-family: Arial, Helvetica, sans-serif;
@@ -225,7 +232,7 @@ h3{
 
 //notecard styling
 .content-container{
-  border: 1px solid orange;
+  border: none;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -234,7 +241,7 @@ h3{
 }
 
 .contents{
-  border: 1px solid purple;
+  border: none;
   font-size: 5em;
 }
 
