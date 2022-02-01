@@ -55,7 +55,7 @@ const DailyContainer = (props) => {
   }
   return(
     <div className='dailyContainer'>
-      <h3>Your Daily Cards</h3>
+      <h3>Daily Dash</h3>
       <DailyCard className="daily-card" notes={notes} index={index} />
       <div className="btn-container" >
         <button className="btn" onClick={handlePrev}>Previous</button>

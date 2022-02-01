@@ -10,31 +10,24 @@ export default function HoverDiv(props) {
 
 
   const categoryText = {
-    '1': 'To Do',
-    '2': 'Shopping',
-    '3': 'Ideas',
-    '4': 'General',
+    '1': ['To Do', 'linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%)'],
+    '2': ['Shopping', 'linear-gradient(120deg, #f093fb 0%, #f5576c 100%)'],
+    '3': ['Ideas','linear-gradient(to right, #43e97b 0%, #38f9d7 100%)'],
+    '4': ['General','linear-gradient(to top, #5ee7df 0%, #b490ca 100%)'],
   }
 
   function divText (a) {
     if (props.hoverOn) {
-      return categoryText[a]
+      return categoryText[a][0]
     } 
   }
-  // function setColor(color) {
-  //   const obj = {
-  //     box-shadow: `inset 0 0 50px ${color},inset 20px 0 80px ${color},inset - 20px 0 80px ${color},inset 20px 0 300px ${color},inset - 20px 0 300px ${color},0 0 20px ${color},-10px 0 40px ${color},10px 0 40px ${color};`
-  
-  //   }
-  //   console.log(color)
-  //   return {box}
-  // }
 
   function isHover() {
     if (props.hoverOn) {
-      const myMessage = 'inset 0 0 50px #fff, inset 20px 0 80px #f0f, inset -20px 0 80px #0ff, inset 20px 0 300px #f0f, inset -20px 0 300px #0ff, 0 0 20px #fff, -10px 0 40px #f0f, 10px 0 40px #0ff';
-      const newMessage = myMessage.replace(/#f0f/g, props.colorProps);
-      return {boxShadow: newMessage}
+      const myMessage = categoryText[props.categoryID][1];
+      console.log(props.categoryID, myMessage);
+      // const newMessage = myMessage.replace(/#f0f/g, props.colorProps);
+      return { backgroundImage : myMessage}
     }
   }
   const handleDragEnter = e => {
@@ -72,7 +65,7 @@ export default function HoverDiv(props) {
 
   useEffect(() => {
     setStyle(isHover());
-    console.log(style)
+    console.log('this is the style',style)
     setInsideText(divText(props.categoryID));
   }, [props.hoverOn]);
 

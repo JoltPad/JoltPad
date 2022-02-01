@@ -6,6 +6,7 @@ import 'antd/dist/antd.css';
 import CardDiv from './CardDiv.jsx';
 import { Button } from '@mui/material';
 import DailyContainer from '../containers/DailyContainer.jsx';
+import Joltpad from '../assets/joltpad.png';
 
 export default function NotePage() {
 
@@ -54,7 +55,9 @@ export default function NotePage() {
           <div className='notepage'>
             <div>.</div>
             <CardDiv noteInput={noteInput} setNoteInput={setNoteInput} hoverOn={hoverOn} setHoverOn={setHoverOn} />
+            <img src={Joltpad} className='imgJolt'/> 
             {/* can add a conditional statement to only render the following when hoverOn is false */}
+
             <Button style ={{position: 'absolute', left:'0', bottom:'0'}} onClick={() => setCalendarViewOn(false)}> Calendar </Button>
             <Button style ={{position: 'absolute', right:'0', bottom:'0'}} onClick={() => setDailyDashOn(false)}> Daily Dash </Button>
           </div>

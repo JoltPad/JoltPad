@@ -54,6 +54,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.16.5",
     "cross-env": "^7.0.3",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
     "install": "^0.13.0",
     "isomorphic-fetch": "^3.0.0",
